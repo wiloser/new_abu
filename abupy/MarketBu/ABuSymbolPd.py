@@ -8,7 +8,7 @@ from __future__ import division
 from __future__ import print_function
 
 import logging
-from collections import Iterable
+from collections.abc import Iterable
 
 import pandas as pd
 
@@ -45,6 +45,7 @@ def _benchmark(df, benchmark, symbol):
     :param symbol: Symbol对象
     :return: 使用基准的时间范围切割返回的金融时间序列
     """
+    print(df.index & benchmark.kl_pd.index)
     if len(df.index & benchmark.kl_pd.index) <= 0:
         # 如果基准benchmark时间范围和输入的df没有交集，直接返回None
         return None
